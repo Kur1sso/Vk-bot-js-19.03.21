@@ -4,7 +4,6 @@ const vk = require('node-vk-bot-api');
 const Scene = require('node-vk-bot-api/lib/scene');
 const Session = require('node-vk-bot-api/lib/session');
 const Stage = require('node-vk-bot-api/lib/stage');
-const schedule = require('node-schedule');
 const api = require('node-vk-bot-api/lib/api');
 const Markup = require('node-vk-bot-api/lib/markup');
 const Block = db.BlockModel;
@@ -28,7 +27,7 @@ const sceneD = new Scene('del',
   		return;
     }
     ctx.scene.next('del');
-	ctx.reply('Укажите ссылку dasdsa', null, Markup
+	ctx.reply('Укажите ссылку', null, Markup
 		.keyboard([
 			[
 			Markup.button('back', 'negative'),
@@ -56,7 +55,6 @@ const sceneD = new Scene('del',
 		ctx.scene.leave();
 		return;
 	}
-	console.log('dsds')
 	let count = -1;
 	let pos = 0;
 	while (true) {
@@ -234,6 +232,7 @@ function postToServer (ctx) {
 			const block = new Block();
 			block.userId = acc[0].id;
 			block.link = ctx.message.id;
+			block.limit = 20;
 			block.save();
 			})
 		} catch(e) {

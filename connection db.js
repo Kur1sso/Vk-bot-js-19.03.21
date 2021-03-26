@@ -14,6 +14,7 @@ async function initialize() {
 const Scheme = new Schema({
 	userId: String,
     link: String,
+    limit: Number,
     root: Boolean,
 });
 const BlockModel = mongoose.model('Block', Scheme);
